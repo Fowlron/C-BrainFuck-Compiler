@@ -140,10 +140,12 @@ void start_compilation(FILE *fp, char *code, int verbose, int tapesize) {
     indent(fp, 1);
     fprintf(fp, "unsigned char *tape=malloc(tape_size*sizeof(char));\n");
     indent(fp, 1);
+    fprintf(fp, "unsigned char *tape2 = tape;\n");
+    indent(fp, 1);
     fprintf(fp, "char c;\n");
     compile_code(fp, code, 1, verbose);
     indent(fp, 1);
-    fprintf(fp, "free(tape);\n");
+    fprintf(fp, "free(tape2);\n");
     indent(fp, 1);
     fprintf(fp, "return 0;\n");
     fprintf(fp, "}\n");
